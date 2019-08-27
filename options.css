@@ -1,7 +1,7 @@
 html{
 	
-	margin: 0;
-	padding: 0;
+	margin: 0px;
+	padding: 0px;
 }
 .mainBox{
 	
@@ -34,6 +34,32 @@ hr.sty{
   height: 1px; 
   background: linear-gradient(to left,#1ba1e2,#f0f0f0,#1ba1e2); 
 }
-.col-md-4{
-	margin-bottom: 5%;
+.btn1,.btn2,.btn3,.btn4,.btn5,.btn6,.btn7,.btn8{
+	
+	 box-shadow: 0 8px 6px -6px black;
+	 border-left-style: solid;
+	 border-right-style: solid;
 }
+
+.bton{
+	background-color: #34495e;
+	
+}
+.bton2{
+	background-color: #f0a30a;
+	
+}
+
+.btnGroupName{
+	font-size: 24px;
+	color: #ecf0f1;
+}
+
+.btnTitle{
+	color:#1abc9c;
+}
+.fixin{
+	height: 30px;
+}
+
+
