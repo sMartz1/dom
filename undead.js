@@ -140,7 +140,7 @@ $(document).ready(function($) {
 function setupMAIN() {
 
     checkBug();
-    setupMenu();
+    
 
     if (isBug) {
         $("#tr_labelId_status>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
@@ -163,11 +163,9 @@ function setupMAIN() {
     //*  BOTON NEXT
     // <div class="nxtBtn">X</div>
     //  */
+    setupMenu();
 
-    $("body").append('<div class="t55 menuIas"><div class="menuAsignaciones"><div class="assBtn n1Btn">N1</div><div class="assBtn n2Btn">N2</div><div class="assBtn n3Btn">N3</div><div class="assBtn hdBtn">HD</div><div class="assBtn csBtn">CS</div><div class="assBtn ecBtn">EC</div><div class="assBtn trBtn">TR</div><div class="assBtn rhBtn">RH</div></div><div class="btnMenu btnAssign">Auto-Assign</div><div class="btnMenu btnInpro">In Progress</div><div class="btnMenu btnPending">Pending</div><div class="btnMenu btnClose">Close</div><div class="btnMenu btnApply">APPLY</div><div class="miniBtn">Ocultar</div></div>');
-    $(".t55").css("opacity", "1");
-    $(".t55").addClass("animated bounceInRight");
-   
+
 }
 
 /* Cambiar hora de comentarios*/
