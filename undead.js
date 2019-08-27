@@ -1,6 +1,14 @@
+chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){
+    alert(request);
+});
+
+
 $(document).ready(function($) {
     var isBug = false;
     var currentTime = new Date();
+    var userMain;
+
+
     $(document).on('keypress', function(e) {
         if (e.which == 13) {
             console.log('You pressed enter!');
@@ -398,6 +406,7 @@ function getIncident(){
 }
 
 function setupMenu(){
+
     $creacionMenu = '<div class="t55 menuIas">';
     $creacionMenu += '<div class="menuAsignaciones">';
     $creacionMenu +='<div class="assBtn n1Btn">N1</div>';
