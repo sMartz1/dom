@@ -400,24 +400,25 @@ function getIncident(){
 }
 
 function setupMenu(){
-    $("body").append('<div class="t55 menuIas">');
-    $("body").append('<div class="menuAsignaciones">');
-    $("body").append('<div class="assBtn n1Btn">N1</div>');
-    $("body").append('<div class="assBtn n2Btn">N2</div>');
-    $("body").append('<div class="assBtn n3Btn">N3</div>');
-    $("body").append('<div class="assBtn hdBtn">HD</div>');
-    $("body").append('<div class="assBtn csBtn">CS</div>');
-    $("body").append('<div class="assBtn ecBtn">EC</div>');
-    $("body").append('<div class="assBtn trBtn">TR</div>');
-    $("body").append('<div class="assBtn rhBtn">RH</div>');
-    $("body").append('</div>');
-    $("body").append('<div class="btnMenu btnAssign">Auto-Assign</div>');
-    $("body").append('<div class="btnMenu btnInpro">In Progress</div>');
-    $("body").append('<div class="btnMenu btnPending">Pending</div>');
-    $("body").append('<div class="btnMenu btnClose">Close</div>');
-    $("body").append('<div class="btnMenu btnApply">APPLY</div>');
-    $("body").append('<div class="miniBtn">Ocultar</div>');
-    $("body").append('</div>');
+    $creacionMenu = '<div class="t55 menuIas">';
+    $creacionMenu += '<div class="menuAsignaciones">';
+    $creacionMenu +='<div class="assBtn n1Btn">N1</div>';
+    $creacionMenu +='<div class="assBtn n2Btn">N2</div>';
+    $creacionMenu +='<div class="assBtn n3Btn">N3</div>';
+    $creacionMenu +='<div class="assBtn hdBtn">HD</div>';
+    $creacionMenu +='<div class="assBtn csBtn">CS</div>';
+    $creacionMenu +='<div class="assBtn ecBtn">EC</div>';
+    $creacionMenu +='<div class="assBtn trBtn">TR</div>';
+    $creacionMenu +='<div class="assBtn rhBtn">RH</div>';
+    $creacionMenu +='</div>';
+    $creacionMenu +='<div class="btnMenu btnAssign">Auto-Assign</div>';
+    $creacionMenu +='<div class="btnMenu btnInpro">In Progress</div>';
+    $creacionMenu +='<div class="btnMenu btnPending">Pending</div>';
+    $creacionMenu +='<div class="btnMenu btnClose">Close</div>';
+    $creacionMenu +='<div class="btnMenu btnApply">APPLY</div>';
+    $creacionMenu +='<div class="miniBtn">Ocultar</div>';
+    $creacionMenu +='</div>';
+    $("body").append($creacionMenu);
     $(".t55").css("opacity", "1");
     $(".t55").addClass("animated bounceInRight");
 }
