@@ -1,0 +1,39 @@
+html{
+	
+	margin: 0;
+	padding: 0;
+}
+.mainBox{
+	
+}
+
+body{
+	background-color: #1ba1e2;
+}
+
+.titleD{
+	color: white; 
+	font-family: 'Helvetica Neue', sans-serif;
+	 font-size: 150px;
+	  font-weight: bold;
+	   letter-spacing: -1px;
+	    line-height: 1;
+}
+
+.titleSub{
+	 color: #111; 
+	 font-family: 'Open Sans', sans-serif; 
+	 font-size: 30px; font-weight: 300; 
+	 line-height: 32px; 
+	 margin: 0 0 72px; 
+	 text-align: center;
+}
+
+hr.sty{ 
+  border: 0; 
+  height: 1px; 
+  background: linear-gradient(to left,#1ba1e2,#f0f0f0,#1ba1e2); 
+}
+.col-md-4{
+	margin-bottom: 5%;
+}
