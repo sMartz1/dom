@@ -1,11 +1,18 @@
 jQuery(document).ready(function($) {
+
+	//SETUP USER
+	chrome.storage.sync.get("user",function(x){
+			$("#user").append(x["user"]);
+		});
 	botones = [
 	{"name":".btn1","title":"x","groupName":"x"},
 	{"name":".btn2","title":"x","groupName":"x"},
 	{"name":".btn3","title":"x","groupName":"x"},
 	{"name":".btn4","title":"x","groupName":"x"},
 	{"name":".btn5","title":"x","groupName":"x"},
-	{"name":".btn6","title":"x","groupName":"x"}];
+	{"name":".btn6","title":"x","groupName":"x"},
+	{"name":".btn7","title":"x","groupName":"x"},
+	{"name":".btn8","title":"x","groupName":"x"}];
 
 	botones.forEach(function(bot,index){
 			var name = bot.name;
