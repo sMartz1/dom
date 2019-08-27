@@ -1,0 +1,167 @@
+.t55{
+	font-family: 'Roboto', sans-serif;
+	width: 100px;
+	opacity: 0;
+	font-size: 11px;
+ 	text-transform: uppercase;
+ 	letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  user-select: none; 
+  position: fixed; /* Set the navbar to fixed position */
+  top: 250px; /* Position the navbar at the top of the page */
+  /* Full width */
+  z-index: 100;
+  right: 16px;
+  text-align: center;
+}
+.btnMenu{
+	box-shadow:4px;
+	padding-top: 8%;
+	display: block;
+	width : 100%;
+	height: 80px;
+	color : white;
+	font-weight: bold;
+	background-color: #2d89ef;
+}
+
+.nxtBtn{
+	width: 30%;
+	height: 10%;
+	background-color: grey;
+
+}
+.btnInpro{
+	
+	margin-top: 2px;
+	height: 50px;
+	
+	}
+
+.btnAssign{
+	height: 50px;
+	
+	background-color: #00aba9;
+	padding-top: 1.1em;
+
+}
+
+.btnPending{
+	margin-top: 2px;
+	height: 50px;
+	padding-top: 1.5em;
+	
+}
+
+.btnClose{
+	padding-top:32%;
+	background-color: #da532c;
+	margin-top: 2px;
+}
+.btnTest{
+	
+	padding-top:32%;
+	background-color: yellow;
+	margin-top: 2px;
+}
+
+
+.btnApply{
+	
+	border-radius: 0px 0px 0px 13px ;
+	padding-top: 17%;
+	margin-top: 2px;
+	background-color: #00aba9;
+	height: 50px;
+}
+
+.btnApply:hover{
+	background-color: #2EE59D;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.3);
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+.recoveryBtn{
+		border-radius:13px ;
+	font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 1s ease 0s;
+  cursor: pointer;
+  outline: none;
+      position: absolute;
+    width: 100%;
+    top: 36em;
+}
+
+.miniBtn{
+	border-radius:13px ;
+	font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 1s ease 0s;
+  cursor: pointer;
+  outline: none;
+      position: absolute;
+    width: 100%;
+    top: 34em;
+}
+
+.assBtn{
+	width: 47%;
+	height: 40px;
+	background-color: aliceblue;
+	padding-top: 6px;
+	display: inline-block;
+	border: 0.2px solid ;
+}
+
+.assBtn:hover{
+  background-color: #fff;
+  box-shadow: 0px 15px 20px rgba(220, 220, 220, 0.3);
+  transform: translateY(-3px);
+}
+
+.menuAsignaciones{
+	border-radius: 16px 16px 0px 0px;
+}
+
+.cdBtn{
+	border-radius: 7px 0 0 0;
+}
+
+.csBtn,.ecBtn,.n1Btn,.n3Btn,.hdBtn,.n2Btn,.trBtn,.rhBtn{
+   width: 25%;
+   text-align: center !important;
+   
+}
+
+
+
+.n1Btn,.n2Btn,.n3Btn,.csBtn,.ecBtn,.trBtn{
+	border-right: 0px;
+
+}
+
+.csBtn,.ecBtn,.trBtn,.rhBtn{
+	border-top: 0px;
+}
+

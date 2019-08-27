@@ -1,0 +1,32 @@
+Relase 0_9_7 //
+
+     - Cambio nombre grupos
+
+Relase 0_7_1 //
+
+	- Se modifican nuevos nombres de grupos
+	- Correccion animaciones
+	- Panel no habilitado en mails
+	- Boton mostrar fijo
+	- 
+
+Release 0_6_4 ///
+
+   - Al ocultar panel , se elimina box shadow
+
+Release 0_6_2 ///
+
+Optimizacion estetica
+
+
+Release 0_6_1 ////           05/03/19
+
+Optimizacion de css para menu;
+
+Añadido boton de mostrar/ocultar;
+
+Optimizacion de codigo:
+
+	- Switch para diferentes botones de estado
+	- Funcion para englobar setup de inicio
+

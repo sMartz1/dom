@@ -1,0 +1,52 @@
+{
+    "name": "DOM",
+    "background": {
+        "scripts": ["eventPage.js"],
+        "css": "main.css",
+       "persistent" : false
+    },
+    "permissions": [
+        "tabs",
+        "storage",
+        "notifications",
+        "contextMenus"
+
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://helpdesk.goldcar.es/SREdit.jsp*",
+                "https://helpdesk.goldcar.es/HelpDesk.jsp?fromId=IncidentsList",
+                "https://helpdesk.goldcar.es/Home.jsp*",
+                "https://helpdesk.goldcar.es/Login.jsp",
+                "https://helpdesk.goldcar.es/index.jsp#/HelpDesk.jsp?fromId=IncidentsList",
+                "https://helpdesk.goldcar.es/HelpDesk.jsp?fromId=List"
+            ],
+            "css": [
+                "main.css",
+                "animate.css"
+            ],
+            "js": [
+                "jquery-3.3.1.js",
+                "undead.js"
+            ]
+        }
+    ],
+    "options_page" : "option.html",
+    "manifest_version": 2,
+    "icons": {
+        "16": "icon16.png",
+        "128": "icon128.png",
+        "48": "icon48.png"
+    },
+    "browser_action" :{
+        "default_icon": "icon16.png",
+        "default_popup": "popup.html"
+    },
+    "description": "Iaas365 Sysaid",
+    "version": "0.9.9",
+    "web_accessible_resources": [
+        "goal.png"
+    ],
+    "author": "Sebastian Martinez"
+}
