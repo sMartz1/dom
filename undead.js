@@ -140,7 +140,7 @@ $(document).ready(function($) {
 function setupMAIN() {
 
     checkBug();
-    
+    setupMenu();
 
     if (isBug) {
         $("#tr_labelId_status>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
@@ -197,6 +197,7 @@ function setState(estado) {
 
             case 2:
                 $("li:contains('Pending')").trigger("click");
+
                 break;
 
             case 3:
@@ -398,8 +399,27 @@ function getIncident(){
     return $('#contentFrame').contents().find(".UI_Form_BreadCrumbs_Label>span").text();
 }
 
-function setContentInc(){
-
+function setupMenu(){
+    $("body").append('<div class="t55 menuIas">');
+    $("body").append('<div class="menuAsignaciones">');
+    $("body").append('<div class="assBtn n1Btn">N1</div>');
+    $("body").append('<div class="assBtn n2Btn">N2</div>');
+    $("body").append('<div class="assBtn n3Btn">N3</div>');
+    $("body").append('<div class="assBtn hdBtn">HD</div>');
+    $("body").append('<div class="assBtn csBtn">CS</div>');
+    $("body").append('<div class="assBtn ecBtn">EC</div>');
+    $("body").append('<div class="assBtn trBtn">TR</div>');
+    $("body").append('<div class="assBtn rhBtn">RH</div>');
+    $("body").append('</div>');
+    $("body").append('<div class="btnMenu btnAssign">Auto-Assign</div>');
+    $("body").append('<div class="btnMenu btnInpro">In Progress</div>');
+    $("body").append('<div class="btnMenu btnPending">Pending</div>');
+    $("body").append('<div class="btnMenu btnClose">Close</div>');
+    $("body").append('<div class="btnMenu btnApply">APPLY</div>');
+    $("body").append('<div class="miniBtn">Ocultar</div>');
+    $("body").append('</div>');
+    $(".t55").css("opacity", "1");
+    $(".t55").addClass("animated bounceInRight");
 }
 
 
