@@ -39,6 +39,7 @@ hr.sty{
 	 box-shadow: 0 8px 6px -6px black;
 	 border-left-style: solid;
 	 border-right-style: solid;
+	 border-color: #1ba1e2;
 }
 
 .bton{
@@ -60,6 +61,11 @@ hr.sty{
 }
 .fixin{
 	height: 30px;
+}
+
+.userC{
+	background-color: #34495e;
+	color:#ecf0f1;
 }
 
 
