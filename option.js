@@ -1,7 +1,11 @@
 jQuery(document).ready(function($) {
+	$(function () {
+  $('input[data-toggle="tooltip"]').tooltip()
+})
 
 	//SETUP USER
 	chrome.storage.sync.get("user",function(x){
+			console.log("USER: " + x["user"]);
 			$("#user").append(x["user"]);
 		});
 	botones = [
@@ -19,14 +23,12 @@ jQuery(document).ready(function($) {
 		chrome.storage.sync.get([name],function(x){
 			
 			cad = name + ">.col-md-12:first>.btnTitle";
-			console.log(cad);
 			$(cad).append(x[name]);
 		});
 
 		var nameG = bot.name +"G";
 		chrome.storage.sync.get([nameG],function(x){
 			cad = name + ">div:last>.btnGroupName";
-			console.log(x[nameG]);
 			$(cad).append(x[nameG]);
 		});
 

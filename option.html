@@ -6,7 +6,10 @@
 	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="options.css">
 	   <script src="jquery-3.3.1.js"></script>
+	   <script src="poper.js"></script>
+	   <script src="bootstrap.min.js"></script>
 	   <script src="option.js"></script>
+	   <script src="animacionesO.js"></script>
        
 </head>
 <body>
@@ -125,11 +128,54 @@
 
 		<hr class="sty">
 		<br>
-	
 	<div class="userC row text-center">
 		<div class="col-md-6 text-right"><h2>Usuario:</h2></div>
 		<div class="col-md-6 text-left"><h2 id="user" ></h2></div>
 	</div>
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Cambio de boton</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+        	<div class="row">
+          		<h4 class="col-md-6">
+          		Abreviacion boton:
+          		<input class="form-control form-control-lg w-50 text-center iG" maxlength="2" type="text"
+          		title="Solo puedes introducir 2 caracteres"
+          		data-toggle="tooltip" data-placement="bottom"
+          		 >
+
+          		 </h4>
+
+
+
+          		<div class="col-md-6">
+          			<div class="col-md-3 assBtn"></div>
+          		</div>
+          
+        	</div>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Descartar cambios</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal">Guardar cambios</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
 	</div><!-- /*Fin container*/ -->
 	
 </body>

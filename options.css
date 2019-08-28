@@ -68,4 +68,16 @@ hr.sty{
 	color:#ecf0f1;
 }
 
+.assBtn{
+	
+	height: 40px;
+	background-color: aliceblue;
+	padding-top: 6px;
+	display: inline-block;
+	border: 0.2px solid ;
+}
+
+.iG{
+	margin-top: 5px;
+}
 
