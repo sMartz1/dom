@@ -24,8 +24,9 @@ function setupModal(x){
 	console.log(buttonToModify);
 	$(".assBtn").empty();
 	$(".assBtn").append(buttonToModify);
-	$("#saveChanges").click(function(){
+	$("#saveChanges").unbind("click").click(function(){
 		if(!$(".iG").val()){
+			console.log("click activado");
 			alert("No puedes dejar vacia la cabecera del boton...pichon...");
 			
         }else{
