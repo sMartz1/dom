@@ -8,8 +8,10 @@ jQuery(document).ready(function($) {
 
 	$(".iG").on("change paste keyup", function() {
 		console.log("Se ha cambiado valor");
+		checkIg(this);
      	$(".assBtn").empty();
 		$(".assBtn").append($(this).val());
+
 	});
 });
 
@@ -23,14 +25,30 @@ function setupModal(x){
 	$(".assBtn").empty();
 	$(".assBtn").append(buttonToModify);
 	$("#saveChanges").click(function(){
+		if(!$(".iG").val()){
+			alert("No puedes dejar vacia la cabecera del boton...pichon...");
+			
+        }else{
 		var valToSave = $(".iG").val();
 		var save = {};
 		save[botonActual] = valToSave;
 		
+		
 		chrome.storage.sync.set(save);		    
 		chrome.storage.sync.get([botonActual],function(x){
 			console.log(x[botonActual]);
+			$(".iG").val("");
+			$(".assBtn").empty();
+			$("#saveChanges").removeAttr("data-dismiss");
 		});
-		
+	}	
 	});
+}
+
+function checkIg(x){
+	$("#saveChanges").removeAttr("data-dismiss");
+		if($(x).val().length>1){
+			console.log("Se añade clase a boton");
+			$("#saveChanges").attr("data-dismiss","modal");
+		}
 }
