@@ -24,11 +24,13 @@ function setupModal(x){
 	console.log(x);
 	botonActual = $(x).attr("id");
 	console.log("Valor de boton actual : " + botonActual);
-	buttonToModify = $(x).find(".btnTitle").text();
-	$(".iG").attr("placeholder", buttonToModify);
-	console.log(buttonToModify);
+	buttonTitleText = $(x).find(".btnTitle").text();
+	buttonGroupText = $(x).find(".btnGroupName").text();
+	$(".iG").val(buttonTitleText);
+	$(".iGp").val(buttonGroupText);
+	
 	$(".assBtn").empty();
-	$(".assBtn").append(buttonToModify);
+	$(".assBtn").append(buttonTitleText);
 	$("#saveChanges").unbind("click").click(function(){
 		if(!$(".iG").val()){
 			console.log("click activado");
@@ -65,20 +67,20 @@ function checkIg(x){
 
 function checkInputs(){
 	if(!$(".iG").val()){
-			console.log("Ig Vacio");
+			
 			$(".iG").css("background","#c72929");
 			
         }else{
-        	console.log("Ig Valor");
+        	
         	$(".iG").css("background","white");
 
         }
     if(!$(".iGp").val()){
-			console.log("Ig Vacio");
+			
 			$(".iGp").css("background","#c72929");
 			
         }else{
-        	console.log("Ig Valor");
+        	
         	$(".iGp").css("background","white");
 
         }
