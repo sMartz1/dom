@@ -1,5 +1,9 @@
 chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){
-    alert(request);
+    userF = $(".realname").text();
+    var save = {};
+    save["user"] = userF;
+    chrome.storage.sync.set(save);
+    alert("Se ha guardado " + userF + " Como usuario");
 });
 
 
