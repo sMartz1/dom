@@ -32,7 +32,7 @@ function setupBotones(){
 
 	botones.forEach(function(bot,index){
 			var name = bot.name;
-		chrome.storage.sync.get({[name] :'notDefinedYet'},function(x){
+		chrome.storage.sync.get({[name] :'X'},function(x){
 			console.log(x[name]);
 			cad = "."+name + ">.col-md-12:first>.btnTitle";
 			$(cad).empty();
@@ -40,7 +40,7 @@ function setupBotones(){
 		});
 
 		var nameG = bot.name +"G";
-		chrome.storage.sync.get({[nameG] :'Not Defined Yet'},function(x){
+		chrome.storage.sync.get({[nameG] :'Nombre Grupo'},function(x){
 			cad = "." + name + ">div:last>.btnGroupName";
 			$(cad).empty();
 			$(cad).append(x[nameG]);

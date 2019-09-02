@@ -133,7 +133,9 @@
 		<div class="col-md-6 text-left"><h2 id="user" ></h2></div>
 	</div>
   <!-- The Modal -->
-  <div class="modal fade" id="myModal">
+<div class="modal fade" id="myModal">
+
+
     <div class="modal-dialog">
       <div class="modal-content">
       
@@ -148,11 +150,11 @@
         	<div class="row">
           		<h4 class="col-md-6">
           		Abreviacion boton:
-          		<input class="form-control form-control-lg w-50 text-center iG" maxlength="2" type="text"
+          		<input 
+          		class="form-control form-control-lg w-50 text-center iG" 
+          		maxlength="2" type="text"
           		title="Solo puedes introducir 2 caracteres"
-          		data-toggle="tooltip" data-placement="bottom"
-          		 >
-
+          		data-toggle="tooltip" data-placement="bottom">
           		 </h4>
 
 
@@ -160,6 +162,14 @@
           		<div class="col-md-6">
           			<div class="col-md-3 assBtn"></div>
           		</div>
+          		<h4 class="col-md-6">
+          		Nombre de grupo: 
+          		<input 
+          		class="form-control form-control-lg text-center iGp" 
+          		type="text"
+          		title="El nombre del grupo debe ser exacto"
+          		data-toggle="tooltip" data-placement="bottom">
+          		 </h4>
           
         	</div>
         </div>
@@ -167,15 +177,12 @@
         <!-- Modal footer -->
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">Descartar cambios</button>
-          <button type="button" class="btn btn-success" data-dismiss="modal" id="saveChanges">Guardar cambios</button>
+          <button type="button" class="btn btn-success" id="saveChanges">Guardar cambios</button>
         </div>
         
       </div>
     </div>
-  </div>
-
-
-
+</div>
 	</div><!-- /*Fin container*/ -->
 	
 </body>
