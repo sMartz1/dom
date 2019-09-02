@@ -1,8 +1,10 @@
 jQuery(document).ready(function($) {
 	var botonActual;
 	$(".bton").click(function() {
+
 		
 		setupModal(this);
+		checkIg($(".iG"));
 		$("#myModal").modal();
 	});
 
@@ -21,6 +23,7 @@ jQuery(document).ready(function($) {
 });
 
 function setupModal(x){
+
 	console.log(x);
 	botonActual = $(x).attr("id");
 	console.log("Valor de boton actual : " + botonActual);
