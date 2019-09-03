@@ -71,31 +71,31 @@ $(document).ready(function($) {
 
     /** ASSIGN CS */
     /** ASSIGN CS */
-    $(".csBtn").click(function(event) {
+    $(".btn1").click(function(event) {
         setGroup(1);
     });
     /** ASSIGN N2 */
-    $(".n2Btn").click(function(event) {
+    $(".btn2).click(function(event) {
         setGroup(2);
     });
     /** ASSIGN EC */
-    $(".ecBtn").click(function(event) {
+    $(".btn3").click(function(event) {
         setGroup(3);
     });
     /** ASSIGN RH */
-    $(".rhBtn").click(function(event) {
+    $(".btn4").click(function(event) {
         setGroup(4);
     });
-    $(".n1Btn").click(function(event) {
+    $(".btn5").click(function(event) {
         setGroup(5);
     });
-    $(".n3Btn").click(function(event) {
+    $(".btn6").click(function(event) {
         setGroup(6);
     });
-    $(".hdBtn").click(function(event) {
+    $(".btn7").click(function(event) {
         setGroup(7);
     });
-    $(".trBtn").click(function(event) {
+    $(".btn8").click(function(event) {
         setGroup(8);
     });
     setTimeout(function() {
@@ -146,7 +146,7 @@ $(document).ready(function($) {
         }
 
     });
-}); /** Fin READY */
+ /** Fin READY */
 
 /** [setupMAIN Setup MODULO PRINCIPAL] */
 function setupMAIN() {
