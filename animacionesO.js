@@ -10,28 +10,33 @@ jQuery(document).ready(function($) {
 
 	$(".iG").on("change paste keyup", function() {
 		checkInputs();
-		console.log("Se ha cambiado valor");
+		//console.log("Se ha cambiado valor");
 		checkIg(this);
      	$(".assBtn").empty();
 		$(".assBtn").append($(this).val());
 
 	});
-		$(".iGp").on("change paste keyup", function() {
-		checkInputs();
+		$(".selectForm").on("change", function() {
+			console.log("Select cambia");
 
 	});
 });
 
 function setupModal(x){
 
-	console.log(x);
+	//console.log(x);
 	botonActual = $(x).attr("id");
 	console.log("Valor de boton actual : " + botonActual);
 	buttonTitleText = $(x).find(".btnTitle").text();
 	buttonGroupText = $(x).find(".btnGroupName").text();
+	console.log("Valor de grupo actual : " + buttonGroupText);
+	checkinput = $(".selectForm option:contains('" + buttonGroupText + "')").length;
+	console.log("LOG " + checkinput);
+	if(checkinput > 0){
+		$(".selectForm").val(buttonGroupText);
+		console.log("Se define " + buttonGroupText );
+	}
 	$(".iG").val(buttonTitleText);
-	$(".iGp").val(buttonGroupText);
-	
 	$(".assBtn").empty();
 	$(".assBtn").append(buttonTitleText);
 	$("#saveChanges").unbind("click").click(function(){
@@ -41,7 +46,8 @@ function setupModal(x){
 			
         }else{
 		var valToSaveIg = $(".iG").val();
-		var valToSaveIgp = $(".iGp").val();
+		var valToSaveIgp = $(".selectForm").val();
+		console.log("Se guarda    " +valToSaveIgp);
 		var save = {};
 		bGp = botonActual +"G";
 		save[botonActual] = valToSaveIg;
@@ -53,7 +59,6 @@ function setupModal(x){
 			console.log(x[botonActual]);
 			$(".iG").val("");
 			$(".assBtn").empty();
-			$(".iGp").val("");
 			$("#saveChanges").removeAttr("data-dismiss");
 		});
 	}	
@@ -63,7 +68,7 @@ function setupModal(x){
 function checkIg(x){
 	$("#saveChanges").removeAttr("data-dismiss");
 		if($(x).val().length>1){
-			console.log("Se añade clase a boton");
+			//console.log("Se añade clase a boton");
 			$("#saveChanges").attr("data-dismiss","modal");
 		}
 }
@@ -78,13 +83,5 @@ function checkInputs(){
         	$(".iG").css("background","white");
 
         }
-    if(!$(".iGp").val()){
-			
-			$(".iGp").css("background","#c72929");
-			
-        }else{
-        	
-        	$(".iGp").css("background","white");
 
-        }
-}
+ }

@@ -75,7 +75,7 @@ $(document).ready(function($) {
         setGroup(1);
     });
     /** ASSIGN N2 */
-    $(".btn2).click(function(event) {
+    $(".btn2").click(function(event) {
         setGroup(2);
     });
     /** ASSIGN EC */
@@ -266,13 +266,15 @@ function setState(estado) {
 function setGroup(estado) {
     checkBug();
     var n3Ass = false;
+    
+
+
     if (isBug) {
         $("#tr_labelId_assigned_group>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
         $("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
         switch (estado) {
 
-            case 1:
-                
+
                 $("li:contains('Customer Services')").trigger("click");
                 $("li:contains('none'):first").trigger("click");
 
