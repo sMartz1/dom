@@ -6,6 +6,15 @@ chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){
     alert("Se ha guardado " + userF + " Como usuario");
 });
 
+botones = [
+    {"name":"btn1","title":"x","groupName":"x"},
+    {"name":"btn2","title":"x","groupName":"x"},
+    {"name":"btn3","title":"x","groupName":"x"},
+    {"name":"btn4","title":"x","groupName":"x"},
+    {"name":"btn5","title":"x","groupName":"x"},
+    {"name":"btn6","title":"x","groupName":"x"},
+    {"name":"btn7","title":"x","groupName":"x"},
+    {"name":"btn8","title":"x","groupName":"x"}];
 
 $(document).ready(function($) {
     var isBug = false;
@@ -83,6 +92,7 @@ $(document).ready(function($) {
         setGroup(3);
     });
     /** ASSIGN RH */
+    
     $(".btn4").click(function(event) {
         setGroup(4);
     });
@@ -266,7 +276,6 @@ function setState(estado) {
 function setGroup(estado) {
     checkBug();
     var n3Ass = false;
-    
 
 
     if (isBug) {
@@ -274,7 +283,8 @@ function setGroup(estado) {
         $("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
         switch (estado) {
 
-
+            case 1:
+                
                 $("li:contains('Customer Services')").trigger("click");
                 $("li:contains('none'):first").trigger("click");
 
@@ -412,17 +422,14 @@ function getIncident(){
 }
 
 function setupMenu(){
-
+    getDataButtons():
     $creacionMenu = '<div class="t55 menuIas">';
     $creacionMenu += '<div class="menuAsignaciones">';
-    $creacionMenu +='<div class="assBtn n1Btn">N1</div>';
-    $creacionMenu +='<div class="assBtn n2Btn">N2</div>';
-    $creacionMenu +='<div class="assBtn n3Btn">N3</div>';
-    $creacionMenu +='<div class="assBtn hdBtn">HD</div>';
-    $creacionMenu +='<div class="assBtn csBtn">CS</div>';
-    $creacionMenu +='<div class="assBtn ecBtn">EC</div>';
-    $creacionMenu +='<div class="assBtn trBtn">TR</div>';
-    $creacionMenu +='<div class="assBtn rhBtn">RH</div>';
+     botones.forEach(function(bot,index){
+        $creacionMenu +='<div class="assBtn ' + bot.name + '">' + bot.title +'</div>';
+
+     });
+
     $creacionMenu +='</div>';
     $creacionMenu +='<div class="btnMenu btnAssign">Auto-Assign</div>';
     $creacionMenu +='<div class="btnMenu btnInpro">In Progress</div>';
@@ -436,4 +443,12 @@ function setupMenu(){
     $(".t55").addClass("animated bounceInRight");
 }
 
+function getDataButtons(){
+    botones.forEach(function(bot,index){
+        var name = bot.name;
+        var group = bot.name + "G";
+        bot.title= chrome.storage.sync.get({[name] :'X'});
+        bot.groupName = chrome.storage.sync.get({[group] :'X'});
+    });
+}
 
