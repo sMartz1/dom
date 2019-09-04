@@ -274,15 +274,16 @@ function setState(estado) {
 }
 
 function setGroupU(groupName){
+    console.log("llega a SetGroup");
     checkBug();
     var n3Ass = false;
     if(groupName =="N3 DevOps"){
         n3Ass = false;
     }
-     if (isBug) {
+    if (isBug) {
         $("#tr_labelId_assigned_group>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
         $("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
-        $("li:contains('"+ groupName+"')").trigger("click");
+        $("li:contains('"+ groupName +"')").trigger("click");
         $("li:contains('none'):first").trigger("click");
         }else{
             $('#contentFrame').contents().find("#tr_labelId_assigned_group>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
