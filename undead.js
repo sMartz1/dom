@@ -6,7 +6,7 @@ chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){
     alert("Se ha guardado " + userF + " Como usuario");
 });
 
-botones = [
+var botonesOPOP = [
     {"name":"btn1","title":"x","groupName":"x"},
     {"name":"btn2","title":"x","groupName":"x"},
     {"name":"btn3","title":"x","groupName":"x"},
@@ -81,32 +81,32 @@ $(document).ready(function($) {
     /** ASSIGN CS */
     /** ASSIGN CS */
     $(".btn1").click(function(event) {
-        setGroup(1);
+        setGroup(botonesOP[0].name);
     });
     /** ASSIGN N2 */
     $(".btn2").click(function(event) {
-        setGroup(2);
+        setGroup(botonesOP[1].name);
     });
     /** ASSIGN EC */
     $(".btn3").click(function(event) {
-        setGroup(3);
+        setGroup(botonesOP[2].name);
     });
     /** ASSIGN RH */
     
     $(".btn4").click(function(event) {
-        setGroup(4);
+        setGroup(botonesOP[3].name);
     });
     $(".btn5").click(function(event) {
-        setGroup(5);
+        setGroup(botonesOP[4].name);
     });
     $(".btn6").click(function(event) {
-        setGroup(6);
+        setGroup(botonesOP[5].name);
     });
     $(".btn7").click(function(event) {
-        setGroup(7);
+        setGroup(botonesOP[6].name);
     });
     $(".btn8").click(function(event) {
-        setGroup(8);
+        setGroup(botonesOP[7].name);
     });
     setTimeout(function() {
     $('#contentFrame').contents().find("#sract_description").focus(function(event){
@@ -145,7 +145,7 @@ $(document).ready(function($) {
         } else {
             $(".btnApply,.btnClose,.btnAssign,.btnPending,.btnInpro,.menuAsignaciones").removeClass("fadeOutUp");
             $(".btnApply,.btnClose,.btnAssign,.btnPending,.btnInpro,.menuAsignaciones").addClass("fadeInDown");
-            /** Ocultar botones */
+            /** Ocultar botonesOP */
             $(".btnApply,.btnClose,.btnAssign,.btnPending,.btnInpro,.menuAsignaciones").css("display", "block");
             /** Ocultar sombra */
             $(".t55").css("box-shadow", "0px 0px 15px rgba(0, 0, 0, 0.1)");
@@ -272,130 +272,31 @@ function setState(estado) {
 
 
 }
-/* Asignar grupo */
-function setGroup(estado) {
+
+function setGroupU(groupName){
     checkBug();
     var n3Ass = false;
-
-
-    if (isBug) {
+    if(groupName =="N3 DevOps"){
+        n3Ass = false;
+    }
+     if (isBug) {
         $("#tr_labelId_assigned_group>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
         $("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
-        switch (estado) {
+        $("li:contains('"+ groupName+"')").trigger("click");
+        $("li:contains('none'):first").trigger("click");
+        }else{
+            $('#contentFrame').contents().find("#tr_labelId_assigned_group>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
+            $('#contentFrame').contents().find("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
+            $('#contentFrame').contents().find("li:contains('"+ groupName+"')").trigger("click");
+            $('#contentFrame').contents().find("li:contains('none'):first").trigger("click");
+    }
 
-            case 1:
-                
-                $("li:contains('Customer Services')").trigger("click");
-                $("li:contains('none'):first").trigger("click");
-
-                break;
-
-            case 2:
-                $("li:contains('N2 APP')").trigger("click");
-                $("li:contains('none'):first").trigger("click");
-                break;
-
-            case 3:
-                $("li:contains('DepartamentoEcommerce')").trigger("click");
-                $("li:contains('none'):first").trigger("click");
-                break;
-
-            case 4:
-                $("li:contains('Administration & Labor Relations')").trigger("click");
-                $("li:contains('none'):first").trigger("click");
-                break;
-            case 5:
-                $("li:contains('N1 SysOps'):first").trigger("click");
-                $("li:contains('none'):first").trigger("click");
-                break;
-
-            case 6:
-                $("li:contains('N3 DevOps')").trigger("click");
-                n3Ass = true;
-                break;
-
-            case 7:
-                $("li:contains('N1 Helpdesk')").trigger("click");
-                $("li:contains('none'):first").trigger("click");
-                break;
-            case 8:
-                $("li:contains('SIGGERTRAINING'):first").trigger("click");
-                $("li:contains('none'):first").trigger("click");
-                break;
-            case 10:
-                $("li:contains('N1 APP')").trigger("click");
-                break;
-
-
-
-
-        }
-        if(n3Ass){
-            setState(2);
+    if(n3Ass){
+        setState(2);
             n3Ass = false;
         }
             else{
         setState(5);
-        }
-
-    } else {
-
-        $('#contentFrame').contents().find("#tr_labelId_assigned_group>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
-        $('#contentFrame').contents().find("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
-        switch (estado) {
-
-            case 1:
-                $('#contentFrame').contents().find("li:contains('Customer Services')").trigger("click");
-                $('#contentFrame').contents().find("li:contains('none'):first").trigger("click");
-                break;
-
-            case 2:
-                $('#contentFrame').contents().find("li:contains('N2 APP')").trigger("click");
-                $('#contentFrame').contents().find("li:contains('none'):first").trigger("click");
-                break;
-
-            case 3:
-                $('#contentFrame').contents().find("li:contains('DepartamentoEcommerce')").trigger("click");
-                $('#contentFrame').contents().find("li:contains('none'):first").trigger("click");
-                break;
-
-            case 4:
-                $('#contentFrame').contents().find("li:contains('Administration & Labor Relations')").trigger("click");
-                $('#contentFrame').contents().find("li:contains('none'):first").trigger("click");
-                break;
-
-            case 5:
-                $('#contentFrame').contents().find("li:contains('N1 SysOps'):first").trigger("click");
-                $('#contentFrame').contents().find("li:contains('none'):first").trigger("click");
-                break;
-
-            case 6:
-                $('#contentFrame').contents().find("li:contains('N3 DevOps')").trigger("click");
-                n3Ass=true;
-                break;
-
-            case 7:
-                $('#contentFrame').contents().find("li:contains('N1 Helpdesk')").trigger("click");
-                $('#contentFrame').contents().find("li:contains('none'):first").trigger("click");
-                break;
-
-            case 8:
-                $('#contentFrame').contents().find("li:contains('SIGGERTRAINING'):first").trigger("click");
-                $('#contentFrame').contents().find("li:contains('none'):first").trigger("click");
-                break;
-             case 10:
-                $('#contentFrame').contents().find("li:contains('N1 APP'):first").trigger("click");
-                break;
-
-        }
-                if(n3Ass){
-            setState(2);
-            n3Ass = false;
-        }
-            else{
-        setState(5);
-        }
-        
     }
 }
 
@@ -422,10 +323,10 @@ function getIncident(){
 }
 
 function setupMenu(){
-    getDataButtons():
+    //getDataButtons();
     $creacionMenu = '<div class="t55 menuIas">';
     $creacionMenu += '<div class="menuAsignaciones">';
-     botones.forEach(function(bot,index){
+     botonesOP.forEach(function(bot,index){
         $creacionMenu +='<div class="assBtn ' + bot.name + '">' + bot.title +'</div>';
 
      });
@@ -444,7 +345,7 @@ function setupMenu(){
 }
 
 function getDataButtons(){
-    botones.forEach(function(bot,index){
+    botonesOP.forEach(function(bot,index){
         var name = bot.name;
         var group = bot.name + "G";
         bot.title= chrome.storage.sync.get({[name] :'X'});
