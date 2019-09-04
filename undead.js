@@ -6,7 +6,7 @@ chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){
     alert("Se ha guardado " + userF + " Como usuario");
 });
 
-var botonesOPOP = [
+    var botonesOP = [
     {"name":"btn1","title":"x","groupName":"x"},
     {"name":"btn2","title":"x","groupName":"x"},
     {"name":"btn3","title":"x","groupName":"x"},
@@ -17,10 +17,11 @@ var botonesOPOP = [
     {"name":"btn8","title":"x","groupName":"x"}];
 
 $(document).ready(function($) {
+
     var isBug = false;
     var currentTime = new Date();
     var userMain;
-
+    console.log(botonesOP[0].title);
 
     $(document).on('keypress', function(e) {
         if (e.which == 13) {
@@ -157,7 +158,7 @@ $(document).ready(function($) {
 
     });
  /** Fin READY */
-
+});
 /** [setupMAIN Setup MODULO PRINCIPAL] */
 function setupMAIN() {
 
@@ -221,7 +222,7 @@ function setState(estado) {
                 break;
 
             case 3:
-                setGroup(5);
+                setGroup("N1 APP");
                 $("li:contains('Closed')").trigger("click");
                 break;
 
@@ -253,7 +254,7 @@ function setState(estado) {
                 break;
 
             case 3:
-                setGroup(10);
+                setGroup("N1 APP");
                 $('#contentFrame').contents().find("li:contains('Closed')").trigger("click");
 
                 break;
