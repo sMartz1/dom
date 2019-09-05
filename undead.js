@@ -349,9 +349,11 @@ function setupMenu(){
 function getDataButtons(){
     botonesOP.forEach(function(bot,index){
         var name = bot.name;
-        var group = bot.name + "G";
-        bot.title= chrome.storage.sync.get({[name] :'X'});
-        bot.groupName = chrome.storage.sync.get({[group] :'X'});
+        chrome.storage.sync.get({[name] :'X'},function(x){
+            console.log(x[name]);
+            
+            botonesOP[index].title =x[name];
+        });
     });
 }
 
