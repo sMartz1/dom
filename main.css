@@ -148,7 +148,7 @@
 	border-radius: 7px 0 0 0;
 }
 
-.csBtn,.ecBtn,.n1Btn,.n3Btn,.hdBtn,.n2Btn,.trBtn,.rhBtn{
+.btn1,.btn2,.btn3,.btn4,.btn5,.btn6,.btn7,.btn8{
    width: 25%;
    text-align: center !important;
    
@@ -156,12 +156,12 @@
 
 
 
-.n1Btn,.n2Btn,.n3Btn,.csBtn,.ecBtn,.trBtn{
+.btn1,.btn2,.btn3,.btn5,.btn6,.btn7{
 	border-right: 0px;
 
 }
 
-.csBtn,.ecBtn,.trBtn,.rhBtn{
+.btn5,.btn6,.btn7,.btn8{
 	border-top: 0px;
 }
 
