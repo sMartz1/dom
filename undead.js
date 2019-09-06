@@ -6,7 +6,7 @@ chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){
     alert("Se ha guardado " + userF + " Como usuario");
 });
 
-    var botonesOP = [
+    botonesOP = [
     {"name":"btn1","title":"x","groupName":"x"},
     {"name":"btn2","title":"x","groupName":"x"},
     {"name":"btn3","title":"x","groupName":"x"},
@@ -17,7 +17,7 @@ chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){
     {"name":"btn8","title":"x","groupName":"x"}];
 
 $(document).ready(function($) {
-
+    getDataButtons();
     var isBug = false;
     var currentTime = new Date();
     var userMain;
@@ -28,6 +28,7 @@ $(document).ready(function($) {
             console.log('You pressed enter!');
         }
     });
+    getDataButtons();
     //TIMEOUT PARA CARGA TRAS 2 secs
     setupMAIN();
     /** Boolean para vision de menu */
@@ -186,6 +187,8 @@ function setupMAIN() {
     //*  BOTON NEXT
     // <div class="nxtBtn">X</div>
     //  */
+    //  
+    
     setupMenu();
 
 
@@ -325,10 +328,12 @@ function getIncident(){
 }
 
 function setupMenu(){
-    //getDataButtons();
-    $creacionMenu = '<div class="t55 menuIas">';
+
+    setTimeout(function() {
+         $creacionMenu = '<div class="t55 menuIas">';
     $creacionMenu += '<div class="menuAsignaciones">';
-     botonesOP.forEach(function(bot,index){
+    botonesOP.forEach(function(bot,index){
+        console.log("Se asigna a " + bot.name + " el titulo:    " + bot.title);
         $creacionMenu +='<div class="assBtn ' + bot.name + '">' + bot.title +'</div>';
 
      });
@@ -344,15 +349,18 @@ function setupMenu(){
     $("body").append($creacionMenu);
     $(".t55").css("opacity", "1");
     $(".t55").addClass("animated bounceInRight");
+    }, 2000);
+   
 }
 
 function getDataButtons(){
     botonesOP.forEach(function(bot,index){
         var name = bot.name;
         chrome.storage.sync.get({[name] :'X'},function(x){
-            console.log(x[name]);
+            console.log("Log de cada boton" +  x[name]);
             
             botonesOP[index].title =x[name];
+            console.log("Se ha registrado en el titulo " + botonesOP[index].title);
         });
     });
 }
