@@ -278,7 +278,7 @@ function setState(estado) {
 }
 
 function setGroupU(groupName){
-    console.log("llega a SetGroup");
+    console.log("llega a SetGroup    :   "  + groupName);
     checkBug();
     var n3Ass = false;
     if(groupName =="N3 DevOps"){
@@ -292,7 +292,7 @@ function setGroupU(groupName){
         }else{
             $('#contentFrame').contents().find("#tr_labelId_assigned_group>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
             $('#contentFrame').contents().find("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
-            $('#contentFrame').contents().find("li:contains('"+ groupName+"')").trigger("click");
+            $('#contentFrame').contents().find("li:contains('"+ groupName +"')").trigger("click");
             $('#contentFrame').contents().find("li:contains('none'):first").trigger("click");
     }
 
@@ -332,8 +332,7 @@ function setupMenu(){
     setTimeout(function() {
          $creacionMenu = '<div class="t55 menuIas">';
     $creacionMenu += '<div class="menuAsignaciones">';
-    botonesOP.forEach(function(bot,index){
-        console.log("Se asigna a " + bot.name + " el titulo:    " + bot.title);
+    botonesOP.forEach(function(bot,index){console.log("Se asigna a " + bot.name + " el titulo:    " + bot.title);
         $creacionMenu +='<div class="assBtn ' + bot.name + '">' + bot.title +'</div>';
 
      });
@@ -356,11 +355,14 @@ function setupMenu(){
 function getDataButtons(){
     botonesOP.forEach(function(bot,index){
         var name = bot.name;
+        var nameG = name +"G";
         chrome.storage.sync.get({[name] :'X'},function(x){
-            console.log("Log de cada boton" +  x[name]);
+       
             
-            botonesOP[index].title =x[name];
-            console.log("Se ha registrado en el titulo " + botonesOP[index].title);
+            botonesOP[index].title =x[name];});
+        chrome.storage.sync.get({[nameG] :'X'},function(x){
+           
+            botonesOP[index].groupName =x[nameG];
         });
     });
 }
