@@ -1,3 +1,4 @@
+
 chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){
     userF = $(".realname").text();
     var save = {};
@@ -38,78 +39,17 @@ $(document).ready(function($) {
         console.log("IframeCambio");
     });
 
-    /** APPLY BUTTON */
-    $(".btnApply").click(function(event) {
-        setState(4);
-    });
-    /** IN progress Bttuon */
-    $(".btnInpro").click(function(event) {
 
-        setState(1);
-    });
-    /**   CLOSE BTN   */
-    $(".btnClose").click(function(event) {
-
-        setState(3);
-    });
-    /** PENDING BTN */
-    $(".btnPending").click(function(event) {
-        setState(2);
-    });
-    /** AUTOASIGN */
-    $(".btnAssign").click(function(event) {
-
-        $user = $(".realname").text();
-        console.log($user);
-        $stringFinal = "li:contains('" + $user + "')";
-        checkBug();
-
-        if (!isBug) {
-            $('#contentFrame').contents().find("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
-            $('#contentFrame').contents().find("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>input.autoSuggestInput").val($user);
-            $('#contentFrame').contents().find($stringFinal).trigger("click");
-        } else {
-            $("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
-            $("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>input.autoSuggestInput").val($user);
-            $($stringFinal).trigger("click");
-        }
-    });
 
     $(".recoveryBtn").click(function(event){
 
         saveText(currentTime,getIncident());
     });
 
+   
     /** ASSIGN CS */
     /** ASSIGN CS */
-    $(".btn1").click(function(event) {
-        setGroup(botonesOP[0].name);
-    });
-    /** ASSIGN N2 */
-    $(".btn2").click(function(event) {
-        setGroup(botonesOP[1].name);
-    });
-    /** ASSIGN EC */
-    $(".btn3").click(function(event) {
-        setGroup(botonesOP[2].name);
-    });
-    /** ASSIGN RH */
     
-    $(".btn4").click(function(event) {
-        setGroup(botonesOP[3].name);
-    });
-    $(".btn5").click(function(event) {
-        setGroup(botonesOP[4].name);
-    });
-    $(".btn6").click(function(event) {
-        setGroup(botonesOP[5].name);
-    });
-    $(".btn7").click(function(event) {
-        setGroup(botonesOP[6].name);
-    });
-    $(".btn8").click(function(event) {
-        setGroup(botonesOP[7].name);
-    });
     setTimeout(function() {
     $('#contentFrame').contents().find("#sract_description").focus(function(event){
         console.log("TA click");
@@ -277,7 +217,7 @@ function setState(estado) {
 
 }
 
-function setGroupU(groupName){
+function setGroup(groupName){
     console.log("llega a SetGroup    :   "  + groupName);
     checkBug();
     var n3Ass = false;
@@ -330,7 +270,7 @@ function getIncident(){
 function setupMenu(){
 
     setTimeout(function() {
-         $creacionMenu = '<div class="t55 menuIas">';
+    $creacionMenu = '<div class="t55 menuIas">';
     $creacionMenu += '<div class="menuAsignaciones">';
     botonesOP.forEach(function(bot,index){console.log("Se asigna a " + bot.name + " el titulo:    " + bot.title);
         $creacionMenu +='<div class="assBtn ' + bot.name + '">' + bot.title +'</div>';
@@ -348,6 +288,72 @@ function setupMenu(){
     $("body").append($creacionMenu);
     $(".t55").css("opacity", "1");
     $(".t55").addClass("animated bounceInRight");
+
+    $(".btn1").click(function(event) {
+        setGroup(botonesOP[0].groupName);
+    });
+    /** ASSIGN N2 */
+    $(".btn2").click(function(event) {
+        setGroup(botonesOP[1].groupName);
+    });
+    /** ASSIGN EC */
+    $(".btn3").click(function(event) {
+        setGroup(botonesOP[2].groupName);
+    });
+    /** ASSIGN RH */
+    
+    $(".btn4").click(function(event) {
+        setGroup(botonesOP[3].groupName);
+    });
+    $(".btn5").click(function(event) {
+        setGroup(botonesOP[4].groupName);
+    });
+    $(".btn6").click(function(event) {
+        setGroup(botonesOP[5].groupName);
+    });
+    $(".btn7").click(function(event) {
+        setGroup(botonesOP[6].groupName);
+    });
+    $(".btn8").click(function(event) {
+        setGroup(botonesOP[7].groupName);
+    });
+
+    /** APPLY BUTTON */
+    $(".btnApply").click(function(event) {
+        setState(4);
+    });
+    /** IN progress Bttuon */
+    $(".btnInpro").click(function(event) {
+
+        setState(1);
+    });
+    /**   CLOSE BTN   */
+    $(".btnClose").click(function(event) {
+
+        setState(3);
+    });
+    /** PENDING BTN */
+    $(".btnPending").click(function(event) {
+        setState(2);
+    });
+    /** AUTOASIGN */
+    $(".btnAssign").click(function(event) {
+
+        $user = $(".realname").text();
+        console.log("Se asigna user" + $user);
+        $stringFinal = "li:contains('" + $user + "')";
+        checkBug();
+
+        if (!isBug) {
+            $('#contentFrame').contents().find("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
+            $('#contentFrame').contents().find("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>input.autoSuggestInput").val($user);
+            $('#contentFrame').contents().find($stringFinal).trigger("click");
+        } else {
+            $("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
+            $("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>input.autoSuggestInput").val($user);
+            $($stringFinal).trigger("click");
+        }
+    });
     }, 2000);
    
 }
@@ -361,7 +367,7 @@ function getDataButtons(){
             
             botonesOP[index].title =x[name];});
         chrome.storage.sync.get({[nameG] :'X'},function(x){
-           
+            console.log("Se asigna en el index " + index + " el valor de grupo " + x[nameG]);
             botonesOP[index].groupName =x[nameG];
         });
     });
