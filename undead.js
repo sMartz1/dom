@@ -18,6 +18,12 @@ chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){
     {"name":"btn8","title":"x","groupName":"x"}];
 
 $(document).ready(function($) {
+
+    //get current user
+    chrome.storage.sync.get("user",function(x){
+            console.log("USER: " + x["user"]);
+            userF=x["user"];
+        });
     getDataButtons();
     var isBug = false;
     var currentTime = new Date();
@@ -143,9 +149,8 @@ function setHoraComment(){
 
 }
 /* Asignar estado */
-function setState(estado) {
+function setState(estado){
     /** Verificar si web bug */
-    
     checkBug();
     //Se hace click en dropdownList
 
@@ -176,10 +181,20 @@ function setState(estado) {
             case 5:
                 $("li:contains('Assigned')").trigger("click");
                 break;
+            case 8: 
+                $user = userF;
+                console.log("Se asigna user" + $user);
+                $stringFinal = "li:contains('" + $user + "')";
+                $("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
+                $("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>input.autoSuggestInput").val($user);
+                $($stringFinal).trigger("click");
+                break;
+
+            }
 
 
 
-        }
+        
 
     } else {
 
@@ -209,34 +224,50 @@ function setState(estado) {
             case 5:
                 $('#contentFrame').contents().find("li:contains('Assigned')").trigger("click");
                 break;
-
-
+            case 8:
+                 $user = userF;
+                 console.log("Se asigna user" + $user);
+                 $stringFinal = "li:contains('" + $user + "')";
+                 $('#contentFrame').contents().find("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
+                 $('#contentFrame').contents().find("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>input.autoSuggestInput").val($user);
+                 $('#contentFrame').contents().find($stringFinal).trigger("click");
+                 break;
         }
-    }
-
-
+    
 }
+};
+
+
+
 
 function setGroup(groupName){
     console.log("llega a SetGroup    :   "  + groupName);
     checkBug();
     var n3Ass = false;
     if(groupName =="N3 DevOps"){
-        n3Ass = false;
+        console.log("n3 TRUE");
+        n3Ass = true;
     }
     if (isBug) {
         $("#tr_labelId_assigned_group>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
         $("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
         $("li:contains('"+ groupName +"')").trigger("click");
+        if(!n3Ass){
         $("li:contains('none'):first").trigger("click");
+    }
+        
         }else{
             $('#contentFrame').contents().find("#tr_labelId_assigned_group>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
             $('#contentFrame').contents().find("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
             $('#contentFrame').contents().find("li:contains('"+ groupName +"')").trigger("click");
+            if(!n3Ass){
             $('#contentFrame').contents().find("li:contains('none'):first").trigger("click");
+        }
+        
     }
 
     if(n3Ass){
+        console.log("Se llama desde SetGroup a SET STATE ");
         setState(2);
             n3Ass = false;
         }
@@ -339,20 +370,7 @@ function setupMenu(){
     /** AUTOASIGN */
     $(".btnAssign").click(function(event) {
 
-        $user = $(".realname").text();
-        console.log("Se asigna user" + $user);
-        $stringFinal = "li:contains('" + $user + "')";
-        checkBug();
-
-        if (!isBug) {
-            $('#contentFrame').contents().find("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
-            $('#contentFrame').contents().find("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>input.autoSuggestInput").val($user);
-            $('#contentFrame').contents().find($stringFinal).trigger("click");
-        } else {
-            $("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
-            $("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>input.autoSuggestInput").val($user);
-            $($stringFinal).trigger("click");
-        }
+        setState(8);
     });
     }, 2000);
    
