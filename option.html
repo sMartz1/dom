@@ -1,1 +1,193 @@
-<h1>TEST</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Configuracion DOM</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="options.css">
+	   <script src="jquery-3.3.1.js"></script>
+	   <script src="poper.js"></script>
+	   <script src="bootstrap.min.js"></script>
+	   <script src="option.js"></script>
+	   <script src="animacionesO.js"></script>
+       
+</head>
+<body>
+	<div class="container-fluid mainBox">
+		<div class="row">
+			<div class="col-md-12">
+				<h1 class="text-center titleD">DOM</h1>
+			</div>
+			<div class="col-md-12">
+				<h2 class="text-center titleSub">Configuracion</h2>
+			</div>
+		</div>
+		
+		<hr class="sty">
+		<br>
+
+		<div class="row text-center">
+
+			<div class="col-md-3 btn1    bton" id="btn1">
+				<div class="col-md-12">
+					
+					<h3 class="btnTitle"></h3>
+				</div>
+				<div class="col-md-12">
+					<h3 class="btnGroupName"></h3>
+				</div>
+			</div>
+
+
+			<div class="col-md-3 btn2    bton" id="btn2">
+				<div class="col-md-12">
+					
+					<h3 class="btnTitle"></h3>
+				</div>
+				<div class="col-md-12">
+					<h3 class="btnGroupName"></h3>
+				</div>
+			</div>
+
+
+			<div class="col-md-3 btn3    bton" id="btn3">
+				<div class="col-md-12">
+					<div class="col-md-12">
+						
+					</div>
+					<h3 class="btnTitle"></h3>
+				</div>
+				<div class="col-md-12">
+					<h3 class="btnGroupName"></h3>
+				</div>
+			</div>
+
+
+			<div class="col-md-3 btn4    bton" id="btn4">
+				<div class="col-md-12">
+					<div class="col-md-12">
+						
+					</div>
+					<h3 class="btnTitle"></h3>
+				</div>
+				<div class="col-md-12">
+					<h3 class="btnGroupName"></h3>
+				</div>
+			</div>
+			<div class="col-md-12 fixin"></div>
+
+			<div class="col-md-3 btn5   bton"id="btn5">
+				<div class="col-md-12">
+					<div class="col-md-12">
+						
+					</div>
+					<h3 class="btnTitle"></h3>
+				</div>
+				<div class="col-md-12">
+					<h3 class="btnGroupName"></h3>
+				</div>
+			</div>
+
+			<div class="col-md-3 btn6    bton" id="btn6">
+				<div class="col-md-12">
+					<div class="col-md-12">
+						
+					</div>
+					<h3 class="btnTitle"></h3>
+				</div>
+				<div class="col-md-12">
+					<h3 class="btnGroupName"></h3>
+				</div>
+		    </div>
+
+		    <div class="col-md-3 btn7    bton" id="btn7">
+				<div class="col-md-12">
+					<div class="col-md-12">
+						
+					</div>
+					<h3 class="btnTitle"></h3>
+				</div>
+				<div class="col-md-12">
+					<h3 class="btnGroupName"></h3>
+				</div>
+		    </div>
+
+		    <div class="col-md-3 btn8    bton" id="btn8" >
+				<div class="col-md-12">
+					<div class="col-md-12">
+						
+					</div>
+					<h3 class="btnTitle"></h3>
+				</div>
+				<div class="col-md-12">
+					<h3 class="btnGroupName"></h3>
+				</div>
+		    </div>
+				
+		</div> <!-- /*Fin row*/ -->
+
+		<hr class="sty">
+		<br>
+	<div class="userC row text-center">
+		<div class="col-md-6 text-right"><h2>Usuario:</h2></div>
+		<div class="col-md-6 text-left"><h2 id="user" ></h2></div>
+	</div>
+  <!-- The Modal -->
+<div class="modal fade" id="myModal">
+
+
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Cambio de boton</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+        	<div class="row">
+          		<h4 class="col-md-6">
+          		Abreviacion boton:
+          		<input 
+          		class="form-control form-control-lg w-50 text-center iG" 
+          		maxlength="2" type="text"
+          		title="Solo puedes introducir 2 caracteres"
+          		data-toggle="tooltip" data-placement="bottom">
+          		 </h4>
+
+
+
+          		<div class="col-md-6">
+          			<div class="col-md-3 assBtn"></div>
+          		</div>
+          		<h4 class="col-md-6">
+          		<select class="form-control selectForm">
+      				<option>Customer Services</option>
+     				<option>N2 APP</option>
+      				<option>DepartamentoEcommerce</option>
+      				<option>Administration & Labor Relations</option>
+      				<option>N3 DevOps</option>
+      				<option>N1 Helpdesk</option>
+      				<option>N1 APP</option>
+      				<option>Network Training</option>
+      				<option>N1 SysOps</option>      				
+    </select>
+          
+        	</div>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Descartar cambios</button>
+          <button type="button" class="btn btn-success" id="saveChanges">Guardar cambios</button>
+        </div>
+        
+      </div>
+    </div>
+</div>
+	</div><!-- /*Fin container*/ -->
+	
+</body>
+</html>

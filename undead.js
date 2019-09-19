@@ -1,11 +1,41 @@
+
+chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){
+    userF = $(".realname").text();
+    var save = {};
+    save["user"] = userF;
+    chrome.storage.sync.set(save);
+    alert("Se ha guardado " + userF + " Como usuario");
+});
+
+    botonesOP = [
+    {"name":"btn1","title":"x","groupName":"x"},
+    {"name":"btn2","title":"x","groupName":"x"},
+    {"name":"btn3","title":"x","groupName":"x"},
+    {"name":"btn4","title":"x","groupName":"x"},
+    {"name":"btn5","title":"x","groupName":"x"},
+    {"name":"btn6","title":"x","groupName":"x"},
+    {"name":"btn7","title":"x","groupName":"x"},
+    {"name":"btn8","title":"x","groupName":"x"}];
+
 $(document).ready(function($) {
+
+    //get current user
+    chrome.storage.sync.get("user",function(x){
+            console.log("USER: " + x["user"]);
+            userF=x["user"];
+        });
+    getDataButtons();
     var isBug = false;
     var currentTime = new Date();
+    var userMain;
+    console.log(botonesOP[0].title);
+
     $(document).on('keypress', function(e) {
         if (e.which == 13) {
             console.log('You pressed enter!');
         }
     });
+    getDataButtons();
     //TIMEOUT PARA CARGA TRAS 2 secs
     setupMAIN();
     /** Boolean para vision de menu */
@@ -15,77 +45,17 @@ $(document).ready(function($) {
         console.log("IframeCambio");
     });
 
-    /** APPLY BUTTON */
-    $(".btnApply").click(function(event) {
-        setState(4);
-    });
-    /** IN progress Bttuon */
-    $(".btnInpro").click(function(event) {
 
-        setState(1);
-    });
-    /**   CLOSE BTN   */
-    $(".btnClose").click(function(event) {
-
-        setState(3);
-    });
-    /** PENDING BTN */
-    $(".btnPending").click(function(event) {
-        setState(2);
-    });
-    /** AUTOASIGN */
-    $(".btnAssign").click(function(event) {
-
-        $user = $(".realname").text();
-        console.log($user);
-        $stringFinal = "li:contains('" + $user + "')";
-        checkBug();
-
-        if (!isBug) {
-            $('#contentFrame').contents().find("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
-            $('#contentFrame').contents().find("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>input.autoSuggestInput").val($user);
-            $('#contentFrame').contents().find($stringFinal).trigger("click");
-        } else {
-            $("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
-            $("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>input.autoSuggestInput").val($user);
-            $($stringFinal).trigger("click");
-        }
-    });
 
     $(".recoveryBtn").click(function(event){
 
         saveText(currentTime,getIncident());
     });
 
+   
     /** ASSIGN CS */
     /** ASSIGN CS */
-    $(".csBtn").click(function(event) {
-        setGroup(1);
-    });
-    /** ASSIGN N2 */
-    $(".n2Btn").click(function(event) {
-        setGroup(2);
-    });
-    /** ASSIGN EC */
-    $(".ecBtn").click(function(event) {
-        setGroup(3);
-    });
-    /** ASSIGN RH */
-    $(".rhBtn").click(function(event) {
-        setGroup(4);
-    });
-    $(".n1Btn").click(function(event) {
-        setGroup(5);
-    });
-    $(".n3Btn").click(function(event) {
-        setGroup(6);
-    });
-    $(".hdBtn").click(function(event) {
-        setGroup(7);
-    });
-    $(".trBtn").click(function(event) {
-        setGroup(8);
-    });
+    
     setTimeout(function() {
     $('#contentFrame').contents().find("#sract_description").focus(function(event){
         console.log("TA click");
@@ -123,7 +93,7 @@ $(document).ready(function($) {
         } else {
             $(".btnApply,.btnClose,.btnAssign,.btnPending,.btnInpro,.menuAsignaciones").removeClass("fadeOutUp");
             $(".btnApply,.btnClose,.btnAssign,.btnPending,.btnInpro,.menuAsignaciones").addClass("fadeInDown");
-            /** Ocultar botones */
+            /** Ocultar botonesOP */
             $(".btnApply,.btnClose,.btnAssign,.btnPending,.btnInpro,.menuAsignaciones").css("display", "block");
             /** Ocultar sombra */
             $(".t55").css("box-shadow", "0px 0px 15px rgba(0, 0, 0, 0.1)");
@@ -134,8 +104,8 @@ $(document).ready(function($) {
         }
 
     });
-}); /** Fin READY */
-
+ /** Fin READY */
+});
 /** [setupMAIN Setup MODULO PRINCIPAL] */
 function setupMAIN() {
 
@@ -163,6 +133,8 @@ function setupMAIN() {
     //*  BOTON NEXT
     // <div class="nxtBtn">X</div>
     //  */
+    //  
+    
     setupMenu();
 
 
@@ -177,9 +149,8 @@ function setHoraComment(){
 
 }
 /* Asignar estado */
-function setState(estado) {
+function setState(estado){
     /** Verificar si web bug */
-    
     checkBug();
     //Se hace click en dropdownList
 
@@ -199,7 +170,7 @@ function setState(estado) {
                 break;
 
             case 3:
-                setGroup(5);
+                setGroup("N1 APP");
                 $("li:contains('Closed')").trigger("click");
                 break;
 
@@ -210,10 +181,20 @@ function setState(estado) {
             case 5:
                 $("li:contains('Assigned')").trigger("click");
                 break;
+            case 8: 
+                $user = userF;
+                console.log("Se asigna user" + $user);
+                $stringFinal = "li:contains('" + $user + "')";
+                $("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
+                $("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>input.autoSuggestInput").val($user);
+                $($stringFinal).trigger("click");
+                break;
+
+            }
 
 
 
-        }
+        
 
     } else {
 
@@ -231,7 +212,7 @@ function setState(estado) {
                 break;
 
             case 3:
-                setGroup(10);
+                setGroup("N1 APP");
                 $('#contentFrame').contents().find("li:contains('Closed')").trigger("click");
 
                 break;
@@ -243,135 +224,70 @@ function setState(estado) {
             case 5:
                 $('#contentFrame').contents().find("li:contains('Assigned')").trigger("click");
                 break;
-
-
+            case 8:
+                 $user = userF;
+                 console.log("Se asigna user" + $user);
+                 $stringFinal = "li:contains('" + $user + "')";
+                 $('#contentFrame').contents().find("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
+                 $('#contentFrame').contents().find("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>input.autoSuggestInput").val($user);
+                 $('#contentFrame').contents().find($stringFinal).trigger("click");
+                 break;
         }
-    }
-
-
+    
 }
-/* Asignar grupo */
-function setGroup(estado) {
+};
+
+
+
+
+function setGroup(groupName){
+    console.log("llega a SetGroup    :   "  + groupName);
     checkBug();
     var n3Ass = false;
+    var sys = false;
+
+    if(groupName =="N1 SysOps"){
+        console.log("sys true");
+        sys = true;
+    }
+    if(groupName =="N3 DevOps"){
+        console.log("n3 TRUE");
+        n3Ass = true;
+    }
     if (isBug) {
         $("#tr_labelId_assigned_group>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
         $("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
-        switch (estado) {
+        if(sys){
+            $("li:contains('"+ groupName +"'):first").trigger("click");
+        }else{$("li:contains('"+ groupName +"')").trigger("click");}
+        
+        if(!n3Ass){
+        $("li:contains('none'):first").trigger("click");
+    }
+        
+        }else{
+            $('#contentFrame').contents().find("#tr_labelId_assigned_group>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
+            $('#contentFrame').contents().find("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
+            $('#contentFrame').contents().find("li:contains('"+ groupName +"')").trigger("click");
+            if(sys){
+                            $('#contentFrame').contents().find("li:contains('"+ groupName +"'):first").trigger("click");
 
-            case 1:
-                
-                $("li:contains('Customer Services')").trigger("click");
-                $("li:contains('none'):first").trigger("click");
-
-                break;
-
-            case 2:
-                $("li:contains('N2 APP')").trigger("click");
-                $("li:contains('none'):first").trigger("click");
-                break;
-
-            case 3:
-                $("li:contains('DepartamentoEcommerce')").trigger("click");
-                $("li:contains('none'):first").trigger("click");
-                break;
-
-            case 4:
-                $("li:contains('Administration & Labor Relations')").trigger("click");
-                $("li:contains('none'):first").trigger("click");
-                break;
-            case 5:
-                $("li:contains('N1 SysOps'):first").trigger("click");
-                $("li:contains('none'):first").trigger("click");
-                break;
-
-            case 6:
-                $("li:contains('N3 DevOps')").trigger("click");
-                n3Ass = true;
-                break;
-
-            case 7:
-                $("li:contains('N1 Helpdesk')").trigger("click");
-                $("li:contains('none'):first").trigger("click");
-                break;
-            case 8:
-                $("li:contains('SIGGERTRAINING'):first").trigger("click");
-                $("li:contains('none'):first").trigger("click");
-                break;
-            case 10:
-                $("li:contains('N1 APP')").trigger("click");
-                break;
-
-
-
-
-        }
-        if(n3Ass){
-            setState(2);
-            n3Ass = false;
-        }
-            else{
-        setState(5);
-        }
-
-    } else {
-
-        $('#contentFrame').contents().find("#tr_labelId_assigned_group>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
-        $('#contentFrame').contents().find("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
-        switch (estado) {
-
-            case 1:
-                $('#contentFrame').contents().find("li:contains('Customer Services')").trigger("click");
-                $('#contentFrame').contents().find("li:contains('none'):first").trigger("click");
-                break;
-
-            case 2:
-                $('#contentFrame').contents().find("li:contains('N2 APP')").trigger("click");
-                $('#contentFrame').contents().find("li:contains('none'):first").trigger("click");
-                break;
-
-            case 3:
-                $('#contentFrame').contents().find("li:contains('DepartamentoEcommerce')").trigger("click");
-                $('#contentFrame').contents().find("li:contains('none'):first").trigger("click");
-                break;
-
-            case 4:
-                $('#contentFrame').contents().find("li:contains('Administration & Labor Relations')").trigger("click");
-                $('#contentFrame').contents().find("li:contains('none'):first").trigger("click");
-                break;
-
-            case 5:
-                $('#contentFrame').contents().find("li:contains('N1 SysOps'):first").trigger("click");
-                $('#contentFrame').contents().find("li:contains('none'):first").trigger("click");
-                break;
-
-            case 6:
-                $('#contentFrame').contents().find("li:contains('N3 DevOps')").trigger("click");
-                n3Ass=true;
-                break;
-
-            case 7:
-                $('#contentFrame').contents().find("li:contains('N1 Helpdesk')").trigger("click");
-                $('#contentFrame').contents().find("li:contains('none'):first").trigger("click");
-                break;
-
-            case 8:
-                $('#contentFrame').contents().find("li:contains('SIGGERTRAINING'):first").trigger("click");
-                $('#contentFrame').contents().find("li:contains('none'):first").trigger("click");
-                break;
-             case 10:
-                $('#contentFrame').contents().find("li:contains('N1 APP'):first").trigger("click");
-                break;
-
-        }
-                if(n3Ass){
-            setState(2);
-            n3Ass = false;
-        }
-            else{
-        setState(5);
+            }else{           
+             $('#contentFrame').contents().find("li:contains('"+ groupName +"')").trigger("click");
+}
+            if(!n3Ass){
+            $('#contentFrame').contents().find("li:contains('none'):first").trigger("click");
         }
         
+    }
+
+    if(n3Ass){
+        console.log("Se llama desde SetGroup a SET STATE ");
+        setState(2);
+            n3Ass = false;
+        }
+            else{
+        setState(5);
     }
 }
 
@@ -398,16 +314,15 @@ function getIncident(){
 }
 
 function setupMenu(){
+
+    setTimeout(function() {
     $creacionMenu = '<div class="t55 menuIas">';
     $creacionMenu += '<div class="menuAsignaciones">';
-    $creacionMenu +='<div class="assBtn n1Btn">N1</div>';
-    $creacionMenu +='<div class="assBtn n2Btn">N2</div>';
-    $creacionMenu +='<div class="assBtn n3Btn">N3</div>';
-    $creacionMenu +='<div class="assBtn hdBtn">HD</div>';
-    $creacionMenu +='<div class="assBtn csBtn">CS</div>';
-    $creacionMenu +='<div class="assBtn ecBtn">EC</div>';
-    $creacionMenu +='<div class="assBtn trBtn">TR</div>';
-    $creacionMenu +='<div class="assBtn rhBtn">RH</div>';
+    botonesOP.forEach(function(bot,index){console.log("Se asigna a " + bot.name + " el titulo:    " + bot.title);
+        $creacionMenu +='<div class="assBtn ' + bot.name + '">' + bot.title +'</div>';
+
+     });
+
     $creacionMenu +='</div>';
     $creacionMenu +='<div class="btnMenu btnAssign">Auto-Assign</div>';
     $creacionMenu +='<div class="btnMenu btnInpro">In Progress</div>';
@@ -419,6 +334,75 @@ function setupMenu(){
     $("body").append($creacionMenu);
     $(".t55").css("opacity", "1");
     $(".t55").addClass("animated bounceInRight");
+
+    $(".btn1").click(function(event) {
+        setGroup(botonesOP[0].groupName);
+    });
+    /** ASSIGN N2 */
+    $(".btn2").click(function(event) {
+        setGroup(botonesOP[1].groupName);
+    });
+    /** ASSIGN EC */
+    $(".btn3").click(function(event) {
+        setGroup(botonesOP[2].groupName);
+    });
+    /** ASSIGN RH */
+    
+    $(".btn4").click(function(event) {
+        setGroup(botonesOP[3].groupName);
+    });
+    $(".btn5").click(function(event) {
+        setGroup(botonesOP[4].groupName);
+    });
+    $(".btn6").click(function(event) {
+        setGroup(botonesOP[5].groupName);
+    });
+    $(".btn7").click(function(event) {
+        setGroup(botonesOP[6].groupName);
+    });
+    $(".btn8").click(function(event) {
+        setGroup(botonesOP[7].groupName);
+    });
+
+    /** APPLY BUTTON */
+    $(".btnApply").click(function(event) {
+        setState(4);
+    });
+    /** IN progress Bttuon */
+    $(".btnInpro").click(function(event) {
+
+        setState(1);
+    });
+    /**   CLOSE BTN   */
+    $(".btnClose").click(function(event) {
+
+        setState(3);
+    });
+    /** PENDING BTN */
+    $(".btnPending").click(function(event) {
+        setState(2);
+    });
+    /** AUTOASIGN */
+    $(".btnAssign").click(function(event) {
+
+        setState(8);
+    });
+    }, 2000);
+   
 }
 
+function getDataButtons(){
+    botonesOP.forEach(function(bot,index){
+        var name = bot.name;
+        var nameG = name +"G";
+        chrome.storage.sync.get({[name] :'X'},function(x){
+       
+            
+            botonesOP[index].title =x[name];});
+        chrome.storage.sync.get({[nameG] :'X'},function(x){
+            console.log("Se asigna en el index " + index + " el valor de grupo " + x[nameG]);
+            botonesOP[index].groupName =x[nameG];
+        });
+    });
+}
 
