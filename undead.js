@@ -244,6 +244,12 @@ function setGroup(groupName){
     console.log("llega a SetGroup    :   "  + groupName);
     checkBug();
     var n3Ass = false;
+    var sys = false;
+
+    if(groupName =="N1 SysOps"){
+        console.log("sys true");
+        sys = true;
+    }
     if(groupName =="N3 DevOps"){
         console.log("n3 TRUE");
         n3Ass = true;
@@ -251,7 +257,10 @@ function setGroup(groupName){
     if (isBug) {
         $("#tr_labelId_assigned_group>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
         $("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
-        $("li:contains('"+ groupName +"')").trigger("click");
+        if(sys){
+            $("li:contains('"+ groupName +"'):first").trigger("click");
+        }else{$("li:contains('"+ groupName +"')").trigger("click");}
+        
         if(!n3Ass){
         $("li:contains('none'):first").trigger("click");
     }
@@ -260,6 +269,12 @@ function setGroup(groupName){
             $('#contentFrame').contents().find("#tr_labelId_assigned_group>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
             $('#contentFrame').contents().find("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
             $('#contentFrame').contents().find("li:contains('"+ groupName +"')").trigger("click");
+            if(sys){
+                            $('#contentFrame').contents().find("li:contains('"+ groupName +"'):first").trigger("click");
+
+            }else{           
+             $('#contentFrame').contents().find("li:contains('"+ groupName +"')").trigger("click");
+}
             if(!n3Ass){
             $('#contentFrame').contents().find("li:contains('none'):first").trigger("click");
         }
