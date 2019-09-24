@@ -17,24 +17,19 @@ chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){
     {"name":"btn7","title":"x","groupName":"x"},
     {"name":"btn8","title":"x","groupName":"x"}];
 
-$(document).ready(function($) {
-
+$(document).ready(function($){
     //get current user
     chrome.storage.sync.get("user",function(x){
             console.log("USER: " + x["user"]);
             userF=x["user"];
         });
+
     getDataButtons();
     var isBug = false;
     var currentTime = new Date();
     var userMain;
-    console.log(botonesOP[0].title);
+ 
 
-    $(document).on('keypress', function(e) {
-        if (e.which == 13) {
-            console.log('You pressed enter!');
-        }
-    });
     getDataButtons();
     //TIMEOUT PARA CARGA TRAS 2 secs
     setupMAIN();
@@ -44,39 +39,6 @@ $(document).ready(function($) {
     $('#contentFrame').load(function() {
         console.log("IframeCambio");
     });
-
-
-
-    $(".recoveryBtn").click(function(event){
-
-        saveText(currentTime,getIncident());
-    });
-
-   
-    /** ASSIGN CS */
-    /** ASSIGN CS */
-    
-    setTimeout(function() {
-    $('#contentFrame').contents().find("#sract_description").focus(function(event){
-        console.log("TA click");
-    });
-},0);
-     
-       
-      
-   
-
-    
-
- 
-
-
-    $('#contentFrame').contents().find(".Button3Parts").click(function(event){
-        console.log("add apretado");
-    });
-
-
-
 
     /** Minimizar */
     $(".miniBtn").click(function(event) {
@@ -395,10 +357,9 @@ function getDataButtons(){
     botonesOP.forEach(function(bot,index){
         var name = bot.name;
         var nameG = name +"G";
-        chrome.storage.sync.get({[name] :'X'},function(x){
-       
-            
-            botonesOP[index].title =x[name];});
+        chrome.storage.sync.get({[name] :'X'},function(x){      
+            botonesOP[index].title =x[name];
+        });
         chrome.storage.sync.get({[nameG] :'X'},function(x){
             console.log("Se asigna en el index " + index + " el valor de grupo " + x[nameG]);
             botonesOP[index].groupName =x[nameG];
