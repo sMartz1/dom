@@ -263,7 +263,7 @@ function setGroup(groupName) {
 
     } else {
         $('#contentFrame').contents().find("#tr_labelId_assigned_group>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
-        //$('#contentFrame').contents().find("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
+        $('#contentFrame').contents().find("#tr_labelId_responsibility>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
         $('#contentFrame').contents().find("li:contains('" + groupName + "')").trigger("click");
         if (sys) {
             $('#contentFrame').contents().find("li:contains('" + groupName + "'):first").trigger("click");
