@@ -321,7 +321,7 @@ function setState(estado) {
             case 3:
                 
                 $("li:contains('Closed')").trigger("click");
-                setGroup("N1 APP");
+                
                 break;
 
             case 4:
@@ -360,7 +360,7 @@ function setState(estado) {
             case 3:
                 
                 $('#contentFrame').contents().find("li:contains('Closed')").trigger("click");
-                setGroup("N1 APP");
+                
 
                 break;
 
