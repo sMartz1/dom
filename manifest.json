@@ -44,7 +44,7 @@
         "default_popup": "popup.html"
     },
     "description": "Iaas365 Sysaid",
-    "version": "1.0.1",
+    "version": "1.0.3",
     "web_accessible_resources": [
         "goal.png"
     ],

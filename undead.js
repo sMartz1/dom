@@ -258,8 +258,9 @@ function setGroup(groupName) {
         }
 
         if (!n3Ass || !isClosing) {
-            $("li:contains('none'):first").trigger("click");
-        }
+            console.log("no se cierra ni pertenece a n3");
+            
+        }else{$("li:contains('none'):first").trigger("click");}
 
     } else {
         $('#contentFrame').contents().find("#tr_labelId_assigned_group>.Form_Ctrl_Fields>table>tbody>tr>td:first-child>div>div>.selectedTxt>span").trigger('click');
@@ -272,9 +273,9 @@ function setGroup(groupName) {
             $('#contentFrame').contents().find("li:contains('" + groupName + "')").trigger("click");
         }
         if (!n3Ass || !isClosing) {
-
-            $('#contentFrame').contents().find("li:contains('none'):first").trigger("click");
-        }
+            console.log("no se cierra ni pertenece a n3");
+            
+        }else{$('#contentFrame').contents().find("li:contains('none'):first").trigger("click");}
 
     }
 
